@@ -24,15 +24,15 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun callScreen(isLogin:Boolean){
-        if(isLogin){
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }else{
+//        if(isLogin){
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }else{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }
+//        }
 
     }
 }

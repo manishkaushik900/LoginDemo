@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var userPrefrence:UserPrefrence
+    private lateinit var userPrefrence: UserPrefrence
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +50,11 @@ class LoginActivity : AppCompatActivity() {
 
             if (loginState.usernameError != null) {
                 username.error = getString(loginState.usernameError)
+
+                val charArr = username.toString().toCharArray()
+                val length = username.toString().length - 1
+                val newChar = charArr.sliceArray(0..length).toString()
+
             }
             if (loginState.passwordError != null) {
                 password.error = getString(loginState.passwordError)
@@ -92,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUiWithUser(displayName:String) {
+    private fun updateUiWithUser(displayName: String) {
         GlobalScope.async(Dispatchers.IO) {
             userPrefrence.writeIsLogin(true)
             userPrefrence.writeUserName(displayName)
